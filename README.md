@@ -63,9 +63,6 @@ Once called the variables available will be:
 
 **LOCATION VARS**
 
-
-WL.latitude 
-
 WL.latitude 
 
 WL.longitude
