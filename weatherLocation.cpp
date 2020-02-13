@@ -7,14 +7,13 @@ Viva La Resistance
 
 #include "Arduino.h"
 #include "weatherLocation.h"
-#include <HTTPClient.h>
+#include <HTTPClient.h>		// Please see the readme file 
 #include <ArduinoJson.h>	// ArduinoJSON 6 please
 
 weatherLocation::weatherLocation() {
 
 }
 
-// Put the parsing routines here
 // DON’T CHANGE THESE PLEASE
 
 
@@ -29,7 +28,7 @@ float latitude;
 float longitude;
 
 float temperature;
-int uvIndex;          // Color coded for display
+int uvIndex;          
 float humidity;         // Multiply Dark Sky humidity float by 100 for display
 float windSpeed;
 float windGust;
@@ -117,7 +116,9 @@ void weatherLocation::getCoordinates(String googleKey) {
   // Scan for nearby WiFi networks
 
   int numNetworks = WiFi.scanNetworks();
-  Serial.println(numNetworks);                // Hello World check
+  Serial.print("Found ");
+  Serial.print(numNetworks);
+  Serial.println(" WiFi Networks nearby");  // Hello World check
 
   // Add 3 nearest WiFi MAC Addresses in this JSON form:
   /*
@@ -239,161 +240,21 @@ void weatherLocation::getLocName(String myGkey) {
 
     JsonArray results_0_address_components = results_0["address_components"];
 
-    JsonObject results_0_address_components_0 = results_0_address_components[0];
-    const char* results_0_address_components_0_long_name = results_0_address_components_0["long_name"]; // "23"
-    const char* results_0_address_components_0_short_name = results_0_address_components_0["short_name"]; // "23"
-
-    const char* results_0_address_components_0_types_0 = results_0_address_components_0["types"][0]; // "street_number"
-
-    JsonObject results_0_address_components_1 = results_0_address_components[1];
-    const char* results_0_address_components_1_long_name = results_0_address_components_1["long_name"]; // "Maple Street"
-    const char* results_0_address_components_1_short_name = results_0_address_components_1["short_name"]; // "Maple St"
-
-    const char* results_0_address_components_1_types_0 = results_0_address_components_1["types"][0]; // "route"
-
+    
     JsonObject results_0_address_components_2 = results_0_address_components[2];
-    const char* results_0_address_components_2_long_name = results_0_address_components_2["long_name"]; // "Toms River"
-    const char* results_0_address_components_2_short_name = results_0_address_components_2["short_name"]; // "Toms River"
+    strcpy(city,results_0_address_components_2["short_name"]); // "Toms River"
 
-    const char* results_0_address_components_2_types_0 = results_0_address_components_2["types"][0]; // "locality"
-    const char* results_0_address_components_2_types_1 = results_0_address_components_2["types"][1]; // "political"
-
-    JsonObject results_0_address_components_3 = results_0_address_components[3];
-    const char* results_0_address_components_3_long_name = results_0_address_components_3["long_name"]; // "Ocean County"
-    const char* results_0_address_components_3_short_name = results_0_address_components_3["short_name"]; // "Ocean County"
-
-    const char* results_0_address_components_3_types_0 = results_0_address_components_3["types"][0]; // "administrative_area_level_2"
-    const char* results_0_address_components_3_types_1 = results_0_address_components_3["types"][1]; // "political"
-
-    JsonObject results_0_address_components_4 = results_0_address_components[4];
-    const char* results_0_address_components_4_long_name = results_0_address_components_4["long_name"]; // "New Jersey"
-    const char* results_0_address_components_4_short_name = results_0_address_components_4["short_name"]; // "NJ"
-
-    const char* results_0_address_components_4_types_0 = results_0_address_components_4["types"][0]; // "administrative_area_level_1"
-    const char* results_0_address_components_4_types_1 = results_0_address_components_4["types"][1]; // "political"
-
-    JsonObject results_0_address_components_5 = results_0_address_components[5];
-    const char* results_0_address_components_5_long_name = results_0_address_components_5["long_name"]; // "United States"
-    const char* results_0_address_components_5_short_name = results_0_address_components_5["short_name"]; // "US"
-
-    const char* results_0_address_components_5_types_0 = results_0_address_components_5["types"][0]; // "country"
-    const char* results_0_address_components_5_types_1 = results_0_address_components_5["types"][1]; // "political"
-
-    JsonObject results_0_address_components_6 = results_0_address_components[6];
-    const char* results_0_address_components_6_long_name = results_0_address_components_6["long_name"]; // "08753"
-    const char* results_0_address_components_6_short_name = results_0_address_components_6["short_name"]; // "08753"
-
-    const char* results_0_address_components_6_types_0 = results_0_address_components_6["types"][0]; // "postal_code"
-
-    const char* results_0_formatted_address = results_0["formatted_address"]; // "23 Maple St, Toms River, NJ 08753, USA"
-
-    JsonObject results_0_geometry = results_0["geometry"];
-
-    float results_0_geometry_location_lat = results_0_geometry["location"]["lat"]; // 40.0412299
-    float results_0_geometry_location_lng = results_0_geometry["location"]["lng"]; // -74.2255086
-
-    const char* results_0_geometry_location_type = results_0_geometry["location_type"]; // "ROOFTOP"
-
-    float results_0_geometry_viewport_northeast_lat = results_0_geometry["viewport"]["northeast"]["lat"]; // 40.04257888029149
-    float results_0_geometry_viewport_northeast_lng = results_0_geometry["viewport"]["northeast"]["lng"]; // -74.22415961970849
-
-    float results_0_geometry_viewport_southwest_lat = results_0_geometry["viewport"]["southwest"]["lat"]; // 40.03988091970849
-    float results_0_geometry_viewport_southwest_lng = results_0_geometry["viewport"]["southwest"]["lng"]; // -74.22685758029151
-
-    const char* results_0_place_id = results_0["place_id"]; // "ChIJK3GdtgV4wYkRAl0Q2RB7yPE"
-
-    const char* results_0_plus_code_compound_code = results_0["plus_code"]["compound_code"]; // "2QRF+FQ Toms River, New Jersey, United States"
-    const char* results_0_plus_code_global_code = results_0["plus_code"]["global_code"]; // "87G72QRF+FQ"
-
-    const char* results_0_types_0 = results_0["types"][0]; // "street_address"
-
+   
     JsonObject results_1 = locName["results"][1];
 
     JsonArray results_1_address_components = results_1["address_components"];
-
-    JsonObject results_1_address_components_0 = results_1_address_components[0];
-    const char* results_1_address_components_0_long_name = results_1_address_components_0["long_name"]; // "2250"
-    const char* results_1_address_components_0_short_name = results_1_address_components_0["short_name"]; // "2250"
-
-    const char* results_1_address_components_0_types_0 = results_1_address_components_0["types"][0]; // "street_number"
-
-    JsonObject results_1_address_components_1 = results_1_address_components[1];
-    const char* results_1_address_components_1_long_name = results_1_address_components_1["long_name"]; // "U.S. 9"
-    const char* results_1_address_components_1_short_name = results_1_address_components_1["short_name"]; // "U.S. 9"
-
-    const char* results_1_address_components_1_types_0 = results_1_address_components_1["types"][0]; // "route"
-
-    JsonObject results_1_address_components_2 = results_1_address_components[2];
-    const char* results_1_address_components_2_long_name = results_1_address_components_2["long_name"]; // "Toms River"
-    const char* results_1_address_components_2_short_name = results_1_address_components_2["short_name"]; // "Toms River"
-
-    const char* results_1_address_components_2_types_0 = results_1_address_components_2["types"][0]; // "locality"
-    const char* results_1_address_components_2_types_1 = results_1_address_components_2["types"][1]; // "political"
-
-    JsonObject results_1_address_components_3 = results_1_address_components[3];
-    const char* results_1_address_components_3_long_name = results_1_address_components_3["long_name"]; // "Ocean County"
-    const char* results_1_address_components_3_short_name = results_1_address_components_3["short_name"]; // "Ocean County"
-
-    const char* results_1_address_components_3_types_0 = results_1_address_components_3["types"][0]; // "administrative_area_level_2"
-    const char* results_1_address_components_3_types_1 = results_1_address_components_3["types"][1]; // "political"
-
+    
     JsonObject results_1_address_components_4 = results_1_address_components[4];
-    const char* results_1_address_components_4_long_name = results_1_address_components_4["long_name"]; // "New Jersey"
-    const char* results_1_address_components_4_short_name = results_1_address_components_4["short_name"]; // "NJ"
-
-    const char* results_1_address_components_4_types_0 = results_1_address_components_4["types"][0]; // "administrative_area_level_1"
-    const char* results_1_address_components_4_types_1 = results_1_address_components_4["types"][1]; // "political"
-
-    JsonObject results_1_address_components_5 = results_1_address_components[5];
-    const char* results_1_address_components_5_long_name = results_1_address_components_5["long_name"]; // "United States"
-    const char* results_1_address_components_5_short_name = results_1_address_components_5["short_name"]; // "US"
-
-    const char* results_1_address_components_5_types_0 = results_1_address_components_5["types"][0]; // "country"
-    const char* results_1_address_components_5_types_1 = results_1_address_components_5["types"][1]; // "political"
-
-    JsonObject results_1_address_components_6 = results_1_address_components[6];
-    const char* results_1_address_components_6_long_name = results_1_address_components_6["long_name"]; // "08755"
-    const char* results_1_address_components_6_short_name = results_1_address_components_6["short_name"]; // "08755"
-
-    const char* results_1_address_components_6_types_0 = results_1_address_components_6["types"][0]; // "postal_code"
-
-    JsonObject results_1_address_components_7 = results_1_address_components[7];
-    const char* results_1_address_components_7_long_name = results_1_address_components_7["long_name"]; // "1248"
-    const char* results_1_address_components_7_short_name = results_1_address_components_7["short_name"]; // "1248"
-
-    const char* results_1_address_components_7_types_0 = results_1_address_components_7["types"][0]; // "postal_code_suffix"
-
-    const char* results_1_formatted_address = results_1["formatted_address"]; // "2250 U.S. 9, Toms River, NJ 08755, USA"
-
-    JsonObject results_1_geometry = results_1["geometry"];
-
-    float results_1_geometry_location_lat = results_1_geometry["location"]["lat"]; // 40.0393536
-    float results_1_geometry_location_lng = results_1_geometry["location"]["lng"]; // -74.22755029999999
-
-    const char* results_1_geometry_location_type = results_1_geometry["location_type"]; // "ROOFTOP"
-
-    float results_1_geometry_viewport_northeast_lat = results_1_geometry["viewport"]["northeast"]["lat"]; // 40.0407025802915
-    float results_1_geometry_viewport_northeast_lng = results_1_geometry["viewport"]["northeast"]["lng"]; // -74.22620131970848
-
-    float results_1_geometry_viewport_southwest_lat = results_1_geometry["viewport"]["southwest"]["lat"]; // 40.0380046197085
-    float results_1_geometry_viewport_southwest_lng = results_1_geometry["viewport"]["southwest"]["lng"]; // -74.2288992802915
-
-    const char* results_1_place_id = results_1["place_id"]; // "ChIJ90f-VgF4wYkR9KNr7pTkTCM"
-
-    const char* results_1_plus_code_compound_code = results_1["plus_code"]["compound_code"]; // "2QQC+PX Toms River, New Jersey, United States"
-    const char* results_1_plus_code_global_code = results_1["plus_code"]["global_code"]; // "87G72QQC+PX"
-
-    JsonArray results_1_types = results_1["types"];
-    const char* results_1_types_0 = results_1_types[0]; // "establishment"
-    const char* results_1_types_1 = results_1_types[1]; // "lodging"
-    const char* results_1_types_2 = results_1_types[2]; // "point_of_interest"
-    const char* results_1_types_3 = results_1_types[3]; // "rv_park"
+    strcpy(state,results_1_address_components_4["short_name"]); // "NJ"
 
     const char* status = locName["status"]; // "OK"
 
-    strcpy(city, results_0_address_components_2_short_name);
-    strcpy(state, results_1_address_components_4_short_name);
-
+    
   }
 
   http.end();
