@@ -1,6 +1,8 @@
 
 // This is just an example to show you how to get the vars
 // You need to provide the keys and other defines as indicated for this to work
+// This example assumes you print to a Serial Monitor if you don't and doing so will
+// break something, please change to print destination as required
 
 #include <weatherLocation.h>
 #include <WiFi.h>
