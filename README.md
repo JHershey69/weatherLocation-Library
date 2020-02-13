@@ -1,4 +1,4 @@
-The Weather and Location Library (weatherLocation.h) 
+The Weather and Location Library (weatherLocation.h) v1.04 (Current)
 is a library designed to get just a few pieces of information 
 from Dark Sky dot Net and Google’s Geolocation services.
 
