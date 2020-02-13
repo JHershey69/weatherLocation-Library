@@ -19,7 +19,7 @@ class weatherLocation
 
     //Methods
     void getWeather(String userKey, String userGKey);
-    void geoCoordinates(String googleKey);
+    void getCoordinates(String googleKey);
     void getLocName(String myGkey);
 
     //Variables
