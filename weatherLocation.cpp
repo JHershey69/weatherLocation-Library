@@ -200,7 +200,7 @@ void weatherLocation::getLocName(String myGkey) {
 
   HTTPClient http;
 
-  weatherLocation::geoCoordinates(myGKey);	// ←----- Must call this to get lat and lon
+  weatherLocation::geoCoordinates(myGkey);	// ←----- Must call this to get lat and lon
 
   // Set up the URL this is only lat long, location type ROOFTOP and key
   // and returns a lot of info as you will see in the parsing portion
