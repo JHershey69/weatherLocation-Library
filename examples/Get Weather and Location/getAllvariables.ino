@@ -58,6 +58,8 @@ Serial.print("WL.uvIndex: ");
 Serial.println(WL.uvIndex); // int value
 Serial.print("WL.windSpeed: ");
 Serial.println(WL.windSpeed);   // float value
+Serial.print("WL.windGust: ");
+Serial.println(WL.windGust); // float value
 Serial.print("WL.windBearing: ");
 Serial.println(WL.windBearing); // int value 0 to 359 degrees
 
