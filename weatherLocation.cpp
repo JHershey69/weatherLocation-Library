@@ -66,7 +66,7 @@ void weatherLocation::getWeather(String userKey, String userGKey) {
   http.begin(darkSkyURL);
   int httpCode = http.GET();
   if (httpCode > 0) {
-    Serial.println("Connection to Dark Sky successful!");
+    // Serial.println("Connection to Dark Sky successful!");
 
 	// ONLY CHANGE STUFF IF YOU KNOW WHAT YOU ARE DOING
 
@@ -92,7 +92,7 @@ void weatherLocation::getWeather(String userKey, String userGKey) {
     int offset = doc["offset"]; // -8
 
    } else {
-    Serial.println("Unable to connect to Dark Sky");
+    // Serial.println("Unable to connect to Dark Sky");
   }
 
 
@@ -116,9 +116,9 @@ void weatherLocation::getCoordinates(String googleKey) {
   // Scan for nearby WiFi networks
 
   int numNetworks = WiFi.scanNetworks();
-  Serial.print("Found ");
-  Serial.print(numNetworks);
-  Serial.println(" WiFi Networks nearby");  // Hello World check
+  // Serial.print("Found ");
+  // Serial.print(numNetworks);
+  // Serial.println(" WiFi Networks nearby");  // Hello World check
 
   // Add 3 nearest WiFi MAC Addresses in this JSON form:
   /*
