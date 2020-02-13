@@ -1,7 +1,7 @@
 The Weather and Location Library (weatherLocation.h) is a library designed to get just a few pieces of information from Dark Sky dot Net and Google’s Geolocation services.
 
 The information collected by the library includes:
-Latitude - Current 
+Latitude - Current
 Longitude - Current
 Temperature
 UV Index
