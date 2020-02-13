@@ -50,7 +50,7 @@ Serial.println(WL.city);        // char[45]
 Serial.print("WL.state: ");
 Serial.println(WL.state);
 
-Serial.println("WEATHER VARS"); // In this sketch they will all be set to zero
+Serial.println("WEATHER VARS");
 Serial.print("WL.temperature: ");
 Serial.println(WL.temperature); // int value
 Serial.print("WL.humidity: ");
@@ -59,9 +59,10 @@ Serial.print("WL.uvIndex: ");
 Serial.println(WL.uvIndex); // int value
 Serial.print("WL.windSpeed: ");
 Serial.println(WL.windSpeed);   // float value
+Serial.print("WL.windGust: ");
+Serial.println(WL.windGust); // float value
 Serial.print("WL.windBearing: ");
 Serial.println(WL.windBearing); // int value 0 to 359 degrees
-
 
 
 }
