@@ -2,14 +2,23 @@ The Weather and Location Library (weatherLocation.h) is a library designed to ge
 
 The information collected by the library includes:
 Latitude - Current
+
 Longitude - Current
+
 Temperature
+
 UV Index
+
 Humidity Percentage
+
 Wind Speed
+
 Wind Gust
+
 Wind Direction
+
 Location City Name
+
 Location State Name
 
 A WiFi connection is required, (also a Dark Sky API Key and a Google API Key both are free for 1000 API calls per day visit their respective websites to apply for the keys) and this was created using an ESP32 TTGO. Please be aware there is NO GPS MODULE required to get location information as the routines use found WiFi signals to triangulate a location from Google.
@@ -31,18 +40,26 @@ Once called the variables available will be:
 LOCATION VARS
 
 WL.latitude 
-WL.latitude 
+
 WL.longitude
+
 WL.city
+
 WL.state
+
 
 WEATHER VARS
 
 WL.temperature
+
 WL.uvIndex
+
 WL.humidity
+
 WL.windSpeed
+
 WL.windGust
+
 WL.windDirection
 
 
