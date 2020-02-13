@@ -48,9 +48,12 @@ const char* jsonSend;
 
 void weatherLocation::getWeather(String userKey, String userGKey) {
 
-  HTTPClient http;
+  
+  weatherLocation::getCoordinates(userGKey);
+  delay(1000);
+  
 
-  weatherLocation::geoCoordinates(userGKey);	// ←----- Must call this to get lat and lon for dark sky call
+  HTTPClient http;
 
   String darkSkyURL = DARKSKYWEB;
   darkSkyURL.concat(userKey);
@@ -105,7 +108,7 @@ void weatherLocation::getWeather(String userKey, String userGKey) {
 //============================================================================
 
 
-void weatherLocation::geoCoordinates(String googleKey) {
+void weatherLocation::getCoordinates(String googleKey) {
 
   HTTPClient http;
 
@@ -185,6 +188,9 @@ void weatherLocation::geoCoordinates(String googleKey) {
 
   http.end();
 
+  weatherLocation::getLocName(googleKey);	// ←---------Must call this to get city and state uses lat and lon from above
+					// Calls getCoordinates() from getLocName()
+
 }
 
 //==================================================================================
@@ -200,7 +206,7 @@ void weatherLocation::getLocName(String myGkey) {
 
   HTTPClient http;
 
-  weatherLocation::geoCoordinates(myGkey);	// ←----- Must call this to get lat and lon
+ 
 
   // Set up the URL this is only lat long, location type ROOFTOP and key
   // and returns a lot of info as you will see in the parsing portion
