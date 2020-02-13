@@ -1,12 +1,10 @@
-// The first two includes are required
-// The TFT include is for the ESP32 use whatever you need
+
 // This is just an example to show you how to get the vars
 // You need to provide the keys and other defines as indicated for this to work
 
 #include <weatherLocation.h>
 #include <WiFi.h>
-#include <SPI.h>
-#include <TFT_eSPI.h>
+
 
 
 weatherLocation WL;
@@ -36,8 +34,6 @@ void setup() {
 
 WL.getWeather(DARKSKYKEY,GOOGLEKEY); //<-------------------- Gets ALL variables
 
-// Returns number of wifi networks found before printing these variables
-// In case you are wondering what that rogue number means
 
 Serial.println("LOCATION VARS");
 Serial.print("WL.latitude: ");
