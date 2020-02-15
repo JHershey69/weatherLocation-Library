@@ -29,15 +29,16 @@ class weatherLocation
     float windSpeed;
     float windGust;
     int windBearing;
-    const char* icon;
+    
 
     float latitude;
     float longitude;
 
     char city[45];        // If a city name has more than 50 characters God help us all (maybe Truth or Consequences, NM)
     char state[3];        // 2 char state code in the USA
-    
+    char conditions[20];
   private:
+    const char* icon;
 };
 
 #endif

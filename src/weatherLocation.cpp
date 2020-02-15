@@ -37,6 +37,7 @@ const char* icon;
 
 char city[46];        // If a city name has more than 50 characters God help us all (maybe Truth or Consequences, NM)
 char state[3];        // 2 char state code
+char conditions[20];
 
 
 const char* jsonSend;
@@ -82,6 +83,7 @@ void weatherLocation::getWeather(String userKey, String userGKey) {
 
     JsonObject currently = doc["currently"];
     icon = currently["icon"];
+    strcpy(conditions,currently["icon"]);
     temperature = currently["temperature"];
     humidity = currently["humidity"];
     windSpeed = currently["windSpeed"];
