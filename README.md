@@ -26,6 +26,8 @@ Wind Gust
 
 Wind Direction
 
+Conditions
+
 Location City Name
 
 Location State Name
@@ -85,6 +87,8 @@ WL.windSpeed
 WL.windGust
 
 WL.windDirection
+
+WL.conditions
 
 
 The API calls are already created in the library, all you need to do is plug in 
