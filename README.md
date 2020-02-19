@@ -111,3 +111,6 @@ Anyway, this is her first offering to the Arduino world, and hopes it helps.
 
 Feb2020
 
+**Please note: I am aware of the bug if you go over your Dark Sky Quota of 1000 free API calls per day. 
+The fix will be in the v1.0.6 release. Dark Sky only charges $1US for 1000 more calls if you need them.**
+
