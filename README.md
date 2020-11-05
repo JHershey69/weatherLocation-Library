@@ -1,3 +1,6 @@
+**This is deprecated as Dark Sky is no longer in operation**
+**Please see OpenWeather One Call v2.0.0**
+
 The Weather and Location Library (weatherLocation.h) v1.04 (Current)
 is a library designed to get just a few pieces of information 
 from Dark Sky dot Net and Google’s Geolocation services.
